@@ -34,15 +34,25 @@ transit = thelink.find_all(text=re.compile(r'\bBIKES\b | \bBIKE\b |\bSUBWAYS\b |
 
 ## The PostgreSQL Database 
 * This was very much a big learning experience because as soon I recieve the data I have to store it somehow. 
-* Well, It wasn't long until I realized that this whole time PostgreSQL is a ***SERVER***. Now, hear me out as someone who is just getting started with the industry of software engineering 
+* Well, It wasn't long until I realized that this whole time PostgreSQL is a ***SERVER***. Now, hear me out as someone who is just getting started with the industry of software engineering I was used to Django. Django brings a lot ease when it comes to Databases. This is because Django Models takes care of a lot for you. 
+* I had to learn how to truly create PostgreSQL databases on the terminal and make SELECT queries to practice with relational databases. 
+* Below will be my two relational databases I created to store my data that I recieved through Python. 
+* This table was created to store politician data:
+~~~~sql
+CREATE TABLE politician(
+    politician_id INT GENERATED ALWAYS AS IDENTITY,
+    full_name TEXT NOT NULL,
+	house_or_senate VARCHAR(10) NOT NULL,
+	state VARCHAR ( 100 ) NOT NULL,
+	district VARCHAR(50) NOT NULL,
+	party VARCHAR(255),
+	website TEXT,
+    PRIMARY KEY(politician_id)
+);
 
-  * ``` fetch('https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}') ```
+~~~~
 
-* I am able to call this using React:
+ 
 
-  * ``` fetch('weather/?q={city}') ```
-
-* The reason I am able to do this is because I already made my REST API through Nodejs. It makes it much simpler to call it in REACT.
-
-## Displaying the Data through Django Backend FrameWork 
+## Displaying the Data through Django Full Stack Application 
 
