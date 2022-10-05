@@ -8,7 +8,7 @@ Let's talk a little about the origin of this project... I was talking to a colle
 
 ## View Live Demo
 [https://general-election.herokuapp.com/](https://general-election.herokuapp.com/)
-
+**Disclaimer** This project is very new and is a work in progress I still have a lot to work on.
 
 ## The Algorithm to Gather Data from the Politician's Website 
 <br>
@@ -30,7 +30,7 @@ transit = thelink.find_all(text=re.compile(r'\bBIKES\b | \bBIKE\b |\bSUBWAYS\b |
 ```
 
 
-## React Frontend 
+## The
 You can check out the code here: [github.com/alexcodes11/WeatherApp](https://github.com/alexcodes11/WeatherApp). Now. let's discuss the frontend a little more...
 <br>
 * Now, that I have implemented the REST API. I am now able to request for the API data using React. 
