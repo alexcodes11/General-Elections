@@ -7,7 +7,8 @@ Let's talk a little about the origin of this project... I was talking to a colle
 
 ## View Live Demo
 [https://general-election.herokuapp.com/](https://general-election.herokuapp.com/)
-Disclaimer !!! This project is very new and is a work in progress I still have a lot to work on.
+<br>
+Disclaimer !!! This project is very new and is a work in progress I still have a lot to work on. 
 
 
 ## The Algorithm to Gather Data from the Politician's Website 
