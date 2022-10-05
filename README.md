@@ -14,7 +14,7 @@ Disclaimer !!! This project is very new and is a work in progress I still have a
 ## The Algorithm to Gather Data from the Politician's Website 
 <br>
 
-- I first gathered all the available URL's in the politicians webpage using Python Beautiful Soup HTML parser. 
+- I first gathered all the available URL's in the politician's webpage using Python Beautiful Soup HTML parser. 
    - I did this because we want to loop through each of their webpages to see if there is key words
    - While we are looping we are able to find the key words through Python Regex expressions. 
    - You can check out snippet of code:
@@ -24,7 +24,7 @@ for webpage in webpages.find_all('a'):
     try:
         if theirwebsite in webpage['href']:
 ```
-   - The code below basically returns a list in Python with all the texts that contains the key words. This is a Python Regex Expression:
+   - The code below returns a Python List with all the texts that contains a key words. For example "BIKE" is a key word. My code would return ["Building pedestrian friendly infastructure so people can walk, **"BIKE"**, and run without any fear"].  This is a Python Regex Expression:
  ```
 transit = thelink.find_all(text=re.compile(r'\bBIKES\b | \bBIKE\b |\bSUBWAYS\b | \bMETRO\b | \bRAIL\b | \bTRANSIT\b | \bBIKING\b  | \bBUSES\b '))
 
@@ -32,7 +32,7 @@ transit = thelink.find_all(text=re.compile(r'\bBIKES\b | \bBIKE\b |\bSUBWAYS\b |
 
 ## The PostgreSQL Database 
 * This was very much a big learning experience because as soon I recieve the data I have to store it somehow. 
-* Well, It wasn't long until I realized that this whole time PostgreSQL is a ***SERVER***. Now, hear me out as someone who is just getting started with the industry of 
+* Well, It wasn't long until I realized that this whole time PostgreSQL is a ***SERVER***. Now, hear me out as someone who is just getting started with the industry of software engineering 
 
   * ``` fetch('https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}') ```
 
