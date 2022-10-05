@@ -77,7 +77,19 @@ CREATE TABLE transportation(
 
 ~~~~
 
+## Other Skills I learned before getting to the grand finale...
+* I now know why Docker Containers can be so important on bigger projects.
+	* I had to set up my own Local PostgreSQL server which was already a hasle now imagine setting up so many things at once?
+	* Docker Container is suppose to simplify this process by instead of downloading things to your own machine. You can just do it on a Container. 
+	
+
+## Displaying the Data through Django 
+
+* In the picture below you will be able to pick between two states. Washington or Hawaii. 
+	* Based on which ever button you click it will make a SQL QUERY to display you the data.
+<img width="1146" alt="Screen Shot 2022-10-05 at 6 47 32 AM" src="https://user-images.githubusercontent.com/79346881/194076440-19e0906d-3db9-474c-8a8f-d9e341a2e1b1.png">
+
+* Oh look at you, you ended up picking Washington !! Well This is what happens when you pick it: 
 
 
-## Displaying the Data through Django Full Stack Application 
-
+* As I stated before we are at the infant stages of this project but now you know how difficult it was to get this whole mini project to work. 
