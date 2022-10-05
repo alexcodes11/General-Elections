@@ -1,0 +1,50 @@
+{% extends "transportation/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+
+<h3 style="text-align:center; margin-top: 4rem;"> United States House of Representatives elections in {{state}}, 2022 </h3>
+
+<div style="display:flex ; justify-content: center; margin-top: 2rem; margin-bottom: 4rem;">
+    <div><a class="btn btn-primary" href="/">Go Back</a></div>
+    <div><a class="btn btn-secondary" href="/">Politician's that mentioned Public Transit</a></div>
+
+</div>
+
+
+
+
+{% for result in results %}
+
+
+<div class="card" >
+  <div class="card-header" >
+    <div class="h3" >{{result.district}}: <span>{{result.full_name}} ({{result.party}})</span></div>
+  </div>
+  <div class="card-body" >
+    <blockquote style="font-size: 25px;" class="blockquote mb-0">
+    {% if result.transportation_set.get.quotes == None %}
+      <p>Politician did not mention anything on public transit! </p>
+      {% if result.website == None %}
+        <footer style="font-size: 25px;"class="blockquote-footer"> Politician does not have a website do more research on them yourself!!<cite title="Source Title"></cite></footer>
+        {% else %}
+      <footer style="font-size: 25px;" class="blockquote-footer"> Check out Politican's Website to read more about them !!! <cite title="Source Title">{{result.website}}</cite></footer>
+      {% endif %}
+    {% else %}
+     <p>{{result.transportation_set.get.quotes}}</p>
+    <footer style="font-size: 25px;"class="blockquote-footer"> Information Found on:  <cite title="Source Title">{{result.transportation_set.get.website_found}}</cite></footer>
+    {% endif %}
+    </blockquote>
+  </div>
+</div>
+
+
+<br>
+<br>
+
+{% endfor %}
+
+
+
+{% endblock %}

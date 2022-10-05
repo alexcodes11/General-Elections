@@ -1,0 +1,38 @@
+{% extends "transportation/layout.html" %}
+{% load static %}
+
+{% block body %}
+<h2 style="display: flex; justify-content:center; margin-top: 7rem;">Do Your Local Politicians Believe in Public Transportation?</h2>
+
+<div style="display: flex; justify-content:center;"">
+<p style="font-size:  20px;width: 70%;">I built an algorithm that displays whether or not they mention any form of public transportation on their website!! Of course this project
+is a work in progresss. I only have a couple of states at the moment. The reason being is because I still want to debug this application and learn how to use Selenium Python! Once I am done with
+that I will start adding all 50 states through my algorithm! Click on the Button's below to get started...
+</p>
+</div>
+
+<div style="display: flex; justify-content:center">
+<form action="" method="POST">
+   {% csrf_token %}
+
+<button class="btn btn-secondary" type="submit" name="Washington" value="Washington">Washington</button>
+<button class="btn btn-secondary" type="submit" name="Hawaii" value="Hawaii">Hawaii</button>
+
+</form>
+</div>
+
+<br>
+<div style="display: flex; justify-content:center;"">
+<p style="font-size:  20px; width: 70%;">Lastly, I wanted to explain what it means to believe in public transportation. 
+Well, when I think of Public Transportation we think of some few key words. For me it's a variety of travel options like buses, subways, and light-rail, trains, biking infrastructure, and pedestrian friendly infrastructure.
+My algorithm looks for these specific words through Python Regex and BeautifulSoup. My algorithm needs some more work on it, but it is also worth to mention that a lot of politicians do not have public transportation as a priority. To 
+find out more about my project read the documentation here: <a href="https://github.com/alexcodes11/General-Elections">https://github.com/alexcodes11/General-Elections</a>
+
+</p>
+</div>
+
+
+
+
+
+{% endblock %}
