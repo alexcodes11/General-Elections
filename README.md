@@ -51,8 +51,33 @@ CREATE TABLE politician(
 );
 
 ~~~~
+* As we can see we have the politician name, whether they are in the House or Senate (I added this because I always think about scalabilty!!! Maybe in the future I will Decide to add more data), their state, district, etc.
 
- 
+<br>
+
+* But what about the Public Transportation where is that Data stored? Well that is our next table!!
+	* Let's explain why we need two tables. Again think about scalability!
+	* If in the future I need to add more issues like HealthCare, Education, and Military.
+	* I will be able to do that because I seperated my tables into a relational type of table.
+	* I added a ForeignKey to this table that makes it connect with the Politician Table
+
+~~~~sql
+CREATE TABLE transportation(
+   transportation_id INT GENERATED ALWAYS AS IDENTITY,
+   politician_id INT,
+   info_or_not VARCHAR(50) NOT NULL, 
+   quotes TEXT,
+   website_found TEXT,
+   PRIMARY KEY(transportation_id),
+   CONSTRAINT fk_politician
+      FOREIGN KEY(politician_id) 
+	  REFERENCES politician(politician_id)
+	  ON DELETE CASCADE
+);
+
+~~~~
+
+
 
 ## Displaying the Data through Django Full Stack Application 
 
