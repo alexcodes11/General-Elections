@@ -4,17 +4,16 @@ Welcome to my General Election project!!!
 <br>
 
 Let's talk a little about the origin of this project... I was talking to a colleague of mine where we discussed on alternative approaches to commute anywhere. We both came with the conclusion that improving Public Transportation is the answer. That's when the idea hit me. With the General Elections just around the corner I wanted to gather all the data from the House of Representatives and what they believe on Public Transportation. 
-To see the algrothim
+
 
 ## View Live Demo
 [https://general-election.herokuapp.com/](https://general-election.herokuapp.com/)
 
 
-## The Algorithm to look through the politician's website 
-You can check out the code here: [github.com/alexcodes11/Weather](https://github.com/alexcodes11/Weather). Now, let's talk a little about what I did in the backend... 
+## The Algorithm to find data from the politician's website 
 <br>
-* First, I fetched the both the Google Places API and the Weather API into my proxy server.
-* Next, I made a REST API for both API's so I can call data from the NODE.js server.
+* I first gathered all the available URL's in the politicians webpage using Python Beautiful Soup HTML parser. 
+** I did this because 
 * I then added caching through a middleware for both APIs. This allows for future requests becoming faster than usual. 
 * I added rate limiting to my APIs which prevents spammers from making to many requests to my API server.
 * I secured the API key by hiding it with an env variable in the nodejs. 
