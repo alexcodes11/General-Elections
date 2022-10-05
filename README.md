@@ -23,12 +23,11 @@ for webpage in webpages.find_all('a'):
     try:
         if theirwebsite in webpage['href']:
 ```
-   - An example of a Python Regex Expression:
+   - The code below basically returns a list in Python with all the texts that contains the key words. This is a Python Regex Expression:
  ```
 transit = thelink.find_all(text=re.compile(r'\bBIKES\b | \bBIKE\b |\bSUBWAYS\b | \bMETRO\b | \bRAIL\b | \bTRANSIT\b | \bBIKING\b  | \bBUSES\b '))
 
 ```
-   - The code above basically returns a list in Python with all the texts that contains the key words.
 
 
 ## React Frontend 
