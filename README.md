@@ -17,7 +17,7 @@ Let's talk a little about the origin of this project... I was talking to a colle
    - I did this because we want to loop through each of their webpages to see if there is key words
    - While we are looping we are able to find the key words through Python Regex expressions. 
    - You can check out snippet of code underneath.
-   - ```thelink = requests.get(theirwebsite).text
+ ```
 webpages = BeautifulSoup(thelink, "html.parser")
 for webpage in webpages.find_all('a'):
     try:
