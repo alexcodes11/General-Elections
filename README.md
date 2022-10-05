@@ -92,8 +92,7 @@ CREATE TABLE transportation(
 * Oh look at you, you ended up picking Washington !! Well This is what happens when you pick it: 
 <img width="1378" alt="Screen Shot 2022-10-05 at 6 53 52 AM" src="https://user-images.githubusercontent.com/79346881/194078083-1586b6e6-4bca-4634-911e-df28f865f387.png">
 * Notice how the SQL queries ended up displaying data that I collected through Python's algorithm. The first two people did not mention anything on Public Transportation so it displays that. 
-	* The Third Politician does Display something about Public Transportation so you are able to see what he thinks about Public Transportation
-
+* The Third Politician does Display something about Public Transportation so you are able to see what he thinks about Public Transportation
 * As I stated before we are at the infant stages of this project but now you know how difficult it was to get this whole mini project to work.
 * I still look forward to improving this project everyday because we are barely at the beginning.
 * Hopefully next time you read this I will have all 50 States!! 
