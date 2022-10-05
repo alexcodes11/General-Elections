@@ -13,7 +13,7 @@ Let's talk a little about the origin of this project... I was talking to a colle
 ## The Algorithm to find data from the politician's website 
 <br>
 * I first gathered all the available URL's in the politicians webpage using Python Beautiful Soup HTML parser. 
-** I did this because 
+ * I did this because 
 * I then added caching through a middleware for both APIs. This allows for future requests becoming faster than usual. 
 * I added rate limiting to my APIs which prevents spammers from making to many requests to my API server.
 * I secured the API key by hiding it with an env variable in the nodejs. 
