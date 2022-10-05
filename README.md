@@ -24,7 +24,9 @@ for webpage in webpages.find_all('a'):
     try:
         if theirwebsite in webpage['href']:
 ```
-   - The code below returns a Python List with all the texts that contains a key words. For example "BIKE" is a key word. My code would return ["Building pedestrian friendly infastructure so people can walk, **"BIKE"**, and run without any fear"].  This is a Python Regex Expression:
+   - The code below returns a Python List with all the texts that contains a key words. 
+   - For example "BIKE" is a key word. My code would return ["Building pedestrian friendly infastructure so people can walk, **"BIKE"**, and run without any fear"].  
+   - This is a Python Regex Expression:
  ```
 transit = thelink.find_all(text=re.compile(r'\bBIKES\b | \bBIKE\b |\bSUBWAYS\b | \bMETRO\b | \bRAIL\b | \bTRANSIT\b | \bBIKING\b  | \bBUSES\b '))
 
