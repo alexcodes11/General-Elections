@@ -1,50 +1,123 @@
-{% extends "transportation/layout.html" %}
-{% load static %}
-
+{% extends "transportation/layout.html" %} 
+{% load static %} 
 {% block body %}
 
+<div style="background-color: #fff; padding-top: 4rem; padding-bottom: 4rem">
+  <h1 style="text-align: center; font-size: 2rem;">
+    United States House of Representatives elections in {{state}}, 2022
+  </h1>
 
-<h3 style="text-align:center; margin-top: 4rem;"> United States House of Representatives elections in {{state}}, 2022 </h3>
+  <div style="display: flex; justify-content: center; margin-top: 2em">
+      <a class="btn" href="/">Go Back</a>
 
-<div style="display:flex ; justify-content: center; margin-top: 2rem; margin-bottom: 4rem;">
-    <div><a class="btn btn-primary" href="/">Go Back</a></div>
-    <div><a class="btn btn-secondary" href="/">Politician's that mentioned Public Transit</a></div>
+      <a class="btn btn-outline" href="/">Politician's that mentioned Public Transit</a>
 
+  </div>
 </div>
 
+{% for result, value in results.items %}
 
+<div class="myheader">
+  <h2>{{result }}</h2>
+</div>
 
+<br />
 
-{% for result in results %}
-
-
-<div class="card" >
-  <div class="card-header" >
-    <div class="h3" >{{result.district}}: <span>{{result.full_name}} ({{result.party}})</span></div>
-  </div>
-  <div class="card-body" >
-    <blockquote style="font-size: 25px;" class="blockquote mb-0">
-    {% if result.transportation_set.get.quotes == None %}
-      <p>Politician did not mention anything on public transit! </p>
-      {% if result.website == None %}
-        <footer style="font-size: 25px;"class="blockquote-footer"> Politician does not have a website do more research on them yourself!!<cite title="Source Title"></cite></footer>
-        {% else %}
-      <footer style="font-size: 25px;" class="blockquote-footer"> Check out Politican's Website to read more about them !!! <cite title="Source Title">{{result.website}}</cite></footer>
-      {% endif %}
+<div class="card-grid">
+  {% for row in value %}
+  <div class="card card-shadow">
+    <div class="card-header">{{row.full_name}}</div>
+    <div class="card-readmore">{{row.party }}</div>
+<div style="height:6.25rem">
+    {% if row.website == None %}
+    <div class="card-body">
+      Politician does not have a website!!!!
+    </div>
+    <i class='fa-solid fa-xmark red-color fa-4x'></i>
     {% else %}
-     <p>{{result.transportation_set.get.quotes}}</p>
-    <footer style="font-size: 25px;"class="blockquote-footer"> Information Found on:  <cite title="Source Title">{{result.transportation_set.get.website_found}}</cite></footer>
-    {% endif %}
-    </blockquote>
-  </div>
+          {% if row.transportation_set.get.quotes == None %}
+              <div class="card-body">
+              Does not mention Public Transportation!!
+              </div>
+              <i class='fa-solid fa-xmark red-color fa-4x'></i>
+          {% else %}
+              <div class="card-body">
+              This Politician Mentions Public Transportation!! 
+              </div>
+              <i class='fa fa-check green-color fa-4x'></i>
+          {% endif %}
+
+    {% endif %} 
 </div>
+    <div class="card-footer">
+      <button onclick="view('{{row.politician_id}}')" class="btn">
+        View Quotes
+      </button>
+       <a class="btn btn-outline" target="_blank" rel="noopener noreferrer" href="{{row.website}}">View Website</a>
+    </div>
+    <div class="modal" id="{{row.politician_id}}">
+      <div class="modal-header">
+        <div class="title">{{row.full_name}}'s Quotes</div>
+        <button onclick="view('{{row.politician_id}}')" class="close-button">
+          &times;
+        </button>
+      </div>
+      
+    {% if row.website == None %}
+    <div style="height:6.25rem">
+      <div class="modal-body">
+        Politician Does not have a Website!!
+      </div>
+      <i class='fa-solid fa-xmark red-color fa-4x'></i>
+    </div>
+    {% else %}
+          {% if row.transportation_set.get.quotes == None %}
+              <div style="height:6.25rem">
+                <div class="modal-body">
+                  No information found on Public Transportation!! Check out their Website!
+                </div>
+                <i class='fa-solid fa-xmark red-color fa-4x'></i>
+              </div>
+          {% else %}
+              <div class="card-body">
+               <ul>
+                <li>Found quotes on: {{row.transportation_set.get.website_found}}</li>
+                <li>{{row.transportation_set.get.quotes}}</li>
+               </ul>
+              </div>
+          {% endif %}
+
+    {% endif %} 
 
 
-<br>
-<br>
+    </div>
+  </div>
+  {% endfor %}
+  <div id="overlay"></div>
+</div>
 
 {% endfor %}
 
+<script>
+  function view(id) {
+    var modal = document.getElementById(id);
+    var overlay = document.getElementById("overlay");
 
+    if (modal.classList.length == 2) {
+      modal.classList.remove("active");
+      overlay.classList.remove("active");
+    } else {
+      modal.classList.add("active");
+      overlay.classList.add("active");
+
+      if (modal.classList.length == 2) {
+        overlay.addEventListener("click", () => {
+          modal.classList.remove("active");
+          overlay.classList.remove("active");
+        });
+      }
+    }
+  }
+</script>
 
 {% endblock %}
