@@ -8,7 +8,7 @@ Let's talk a little about the origin of this project... I was talking to a colle
 ## View Live Demo
 [https://general-election.herokuapp.com/](https://general-election.herokuapp.com/)
 <br>
-Disclaimer !!! This project is very new and is a work in progress I still have a lot to work on. 
+Just wanted to mention this project is constantly changing because I am improving it everyday!
 
 
 ## The Algorithm to Gather Data from the Politician's Website 
@@ -87,14 +87,17 @@ CREATE TABLE transportation(
 
 * In the picture below you will be able to pick between two states. Washington or Hawaii. 
 	* Based on which ever button you click it will make a SQL QUERY to display you the data.
-<img width="1146" alt="Screen Shot 2022-10-05 at 6 47 32 AM" src="https://user-images.githubusercontent.com/79346881/194076440-19e0906d-3db9-474c-8a8f-d9e341a2e1b1.png">
+<img width="1429" alt="Screen Shot 2022-10-10 at 3 19 05 AM" src="https://user-images.githubusercontent.com/79346881/194844847-60c09733-5195-4de1-883f-ecc06e3e254a.png">
+
 
 * Oh look at you, you ended up picking Washington !! Well This is what happens when you pick it: 
-<img width="1378" alt="Screen Shot 2022-10-05 at 6 53 52 AM" src="https://user-images.githubusercontent.com/79346881/194078083-1586b6e6-4bca-4634-911e-df28f865f387.png">
+<img width="1427" alt="Screen Shot 2022-10-10 at 3 17 39 AM" src="https://user-images.githubusercontent.com/79346881/194844606-9dd86003-34e9-4fe4-8ba6-97e7d3647a77.png">
 
-- Notice how the SQL queries ended up displaying data that I collected through Python's algorithm. The first two people did not mention anything on Public Transportation so it displays that. 
-- The Third Politician does Display something about Public Transportation so you are able to see what he thinks about Public Transportation
+<img width="1400" alt="Screen Shot 2022-10-10 at 3 21 25 AM" src="https://user-images.githubusercontent.com/79346881/194845209-ae5138c0-430b-4bce-a5c0-2cc0c9430ba6.png">
+
+<img width="1243" alt="Screen Shot 2022-10-10 at 3 21 49 AM" src="https://user-images.githubusercontent.com/79346881/194845285-62f0414d-9068-416e-aef5-f6608d1a6592.png">
+
+
 - As I stated before we are at the infant stages of this project but now you know how difficult it was to get this whole mini project to work.
 - I still look forward to improving this project everyday because we are barely at the beginning.
 - Hopefully next time you read this I will have all 50 States!! 
-
