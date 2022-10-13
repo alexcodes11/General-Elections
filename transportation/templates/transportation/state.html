@@ -50,10 +50,19 @@
     {% endif %} 
 </div>
     <div class="card-footer">
+      {% if row.transportation_set.get.quotes == None %}
       <button onclick="view('{{row.politician_id}}')" class="btn">
         View Quotes
       </button>
+      {% else %}
+      <a href="{% url 'quotes' row.politician_id %}" target="_blank" rel="noopener noreferrer"  class="btn">View Quotes</a> 
+      {% endif %}
+
+      {% if row.website == None %}
+       <button class="btn btn-outline" target="_blank" rel="noopener noreferrer"  onclick="view('{{row.politician_id}}')"">View Website</button>
+       {% else %}
        <a class="btn btn-outline" target="_blank" rel="noopener noreferrer" href="{{row.website}}">View Website</a>
+       {% endif %} 
     </div>
     <div class="modal" id="{{row.politician_id}}">
       <div class="modal-header">
@@ -81,8 +90,12 @@
           {% else %}
               <div class="card-body">
                <ul>
-                <li>Found quotes on: {{row.transportation_set.get.website_found}}</li>
-                <li>{{row.transportation_set.get.quotes}}</li>
+                <li>Quotes Found on: {{row.transportation_set.get.website_found}}</li>
+                <br>
+                {% for quote in row.transportation_set.get.quotes %}
+                <li>{{quote}}</li>
+                {% endfor %}
+                <li>view more</li>
                </ul>
               </div>
           {% endif %}
