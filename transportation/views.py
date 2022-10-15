@@ -33,7 +33,7 @@ def protransit(request):
 def quotes(request, quotes_id):
     if request.method == "GET":
         person = Politician.objects.values_list('full_name', flat=True).get(pk = quotes_id)
-        quotes = Transportation.objects.filter(politician__pk = quotes_id).values_list('quotes', 'website_found')
+        quotes = Transportation.objects.filter(politician__pk = quotes_id)
         return render(request, "transportation/viewmore.html", {"person": person, "quotes": quotes})
 
 

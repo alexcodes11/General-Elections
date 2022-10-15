@@ -1,8 +1,34 @@
 {% extends "transportation/layout.html" %} 
 {% load static %} 
 {% block body %}
+<div style="background-color: #fff; padding-top: 3rem; padding-bottom: 3rem">
+  <h1 style="text-align: center; font-size: 2rem;">
+   {{person}}'s Quotes
+  </h1>
+</div>
 
-{{person}}
-{{quotes}}
+
+<div class="card-grid-quote">
+
+  {% for array in quotes %}
+    {% for quote in array.quotes %}
+
+  <div class="quote-card card-shadow">
+    <div class="quote-body">
+        {{ quote }}
+    </div>
+    <div class="quote-footer">
+        Information found on: <a href="{{array.website_found}}">{{array.website_found}}</a>
+    </div>
+</div>
+
+
+    {% endfor %}
+{% endfor %}
+</div>  
+
+
+
+
 
 {% endblock %}

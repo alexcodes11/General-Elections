@@ -31,18 +31,18 @@
 <div style="height:6.25rem">
     {% if row.website == None %}
     <div class="card-body">
-      Politician does not have a website!!!!
+      Politician does NOT have a website.
     </div>
     <i class='fa-solid fa-xmark red-color fa-4x'></i>
     {% else %}
           {% if row.transportation_set.get.quotes == None %}
               <div class="card-body">
-              Does not mention Public Transportation!!
+              Politician does NOT mention public transportation.
               </div>
               <i class='fa-solid fa-xmark red-color fa-4x'></i>
           {% else %}
               <div class="card-body">
-              This Politician Mentions Public Transportation!! 
+              Politician mentions public transportation!!!
               </div>
               <i class='fa fa-check green-color fa-4x'></i>
           {% endif %}
@@ -66,7 +66,7 @@
     </div>
     <div class="modal" id="{{row.politician_id}}">
       <div class="modal-header">
-        <div class="title">{{row.full_name}}'s Quotes</div>
+        <div class="title">Politician does NOT have any quotes</div>
         <button onclick="view('{{row.politician_id}}')" class="close-button">
           &times;
         </button>
@@ -75,7 +75,7 @@
     {% if row.website == None %}
     <div style="height:6.25rem">
       <div class="modal-body">
-        Politician Does not have a Website!!
+        Politician does NOT have a website.
       </div>
       <i class='fa-solid fa-xmark red-color fa-4x'></i>
     </div>
@@ -83,20 +83,9 @@
           {% if row.transportation_set.get.quotes == None %}
               <div style="height:6.25rem">
                 <div class="modal-body">
-                  No information found on Public Transportation!! Check out their Website!
+                 Politician does NOT mention public transportation on their website
                 </div>
                 <i class='fa-solid fa-xmark red-color fa-4x'></i>
-              </div>
-          {% else %}
-              <div class="card-body">
-               <ul>
-                <li>Quotes Found on: {{row.transportation_set.get.website_found}}</li>
-                <br>
-                {% for quote in row.transportation_set.get.quotes %}
-                <li>{{quote}}</li>
-                {% endfor %}
-                <li>view more</li>
-               </ul>
               </div>
           {% endif %}
 
