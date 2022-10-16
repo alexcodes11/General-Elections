@@ -2,7 +2,6 @@ body{
     background-color: #e9ebee;
 }
 
-
 .myheader{
     text-align: center;
     display: flex;
@@ -58,7 +57,39 @@ body{
     font-size: .7rem;
 }
 
+.indextitle{
+  background-color: #fff; padding-top: 2rem; padding-bottom: 2rem; margin-bottom: 3rem;
 }
+
+  .index-body {
+  font-size: 1rem;
+  padding: .1rem;
+}
+
+.index-header{
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.index-details{
+    margin-top: .6em;
+    font-size: .9rem;
+    width: 92%;
+}
+
+#us-map{
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+}
+
 
 @media only screen and (min-width: 584px) { /* This is for the Computers */
   .quote-body {
@@ -81,8 +112,64 @@ body{
     font-size: 1.1rem;
 }
 
+.indextitle{
+  background-color: #fff; padding-top: 2rem; padding-bottom: 2rem; margin-bottom: 3rem;
 }
 
+  .index-body {
+  font-size: 1.7rem;
+  padding: .5rem;
+  
+}
+
+.index-header{
+    font-size: 1.7rem;
+    margin-top: 5rem;
+}
+
+.index-details{
+    margin-top: 1em;
+    font-size: 1.4em;
+    width: 90%;
+}
+
+
+#us-map{
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 70%;
+}
+
+}
+
+path:hover, circle:hover {
+  stroke: #002868 !important;
+  stroke-width:2px;
+  stroke-linejoin: round;
+  fill: #002868 !important;
+  cursor: pointer;
+}
+#path67 {
+  fill: none !important;
+  stroke: #A9A9A9 !important;
+  cursor: default;
+}
+
+#info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
 
 
 
