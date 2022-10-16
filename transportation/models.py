@@ -128,7 +128,7 @@ class Politician(models.Model):
     full_name = models.TextField()
     house_or_senate = models.CharField(max_length=10)
     state = models.CharField(max_length=100)
-    district = models.CharField(max_length=50)
+    district = models.IntegerField()
     party = models.CharField(max_length=255, blank=True, null=True)
     website = models.TextField(blank=True, null=True)
 
@@ -142,7 +142,7 @@ class Transportation(models.Model):
     politician = models.ForeignKey(Politician, models.DO_NOTHING, blank=True, null=True)
     info_or_not = models.CharField(max_length=50)
     quotes = ArrayField(models.TextField(), blank=True, null = True)
-    website_found = models.TextField(blank=True, null=True)
+    website_found = ArrayField(models.TextField(), blank=True, null = True)
 
     class Meta:
         managed = True
