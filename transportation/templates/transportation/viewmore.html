@@ -10,24 +10,45 @@
 </div>
 
 
+{% for array in quotes %}
 <div class="card-grid-quote">
 
-  {% for array in quotes %}
-    {% for quote in array.quotes %}
-
+  {% for quote in array.quotes %}
   <div class="quote-card card-shadow">
+    
     <div class="quote-body">
-        {{ quote }}
+      {{quote}}
     </div>
+
     <div class="quote-footer">
-        Information found on: <a href="{{array.website_found}}">{{array.website_found}}</a>
+
     </div>
-</div>
 
-
+    </div>
     {% endfor %}
+
+
+    <div class="quote-card card-shadow">
+    
+    <div class="quote-body">
+      Information found on: 
+    </div>
+
+
+  {% for web in array.website_found %} 
+    <cite class="quote-footer">
+      {{  web }}
+    </cite>
+  {% endfor %}
+    </div>
+
+
+  </div>
+
 {% endfor %}
-</div>  
+
+
+
 
 
 
