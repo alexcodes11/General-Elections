@@ -6,7 +6,7 @@ Let's talk a little about the origin of this project... I was talking to a colle
 
 
 ## View Live Demo
-[https://general-election.herokuapp.com/](https://general-election.herokuapp.com/)
+[https://general-elections.herokuapp.com/](https://general-elections.herokuapp.com/)
 <br>
 Just wanted to mention this project is constantly changing because I am improving it everyday!
 
