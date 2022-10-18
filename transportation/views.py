@@ -4,21 +4,21 @@ from django.shortcuts import render
 from .models import Transportation, Politician
 
 
-
+# Order by district number !!
 
 
 def index(request):
     return render(request, "transportation/index.html")
 
 def protransit(request, state_name):
-    results = Politician.objects.filter(state = state_name, transportation__info_or_not = "Pro Transit").values_list('district', flat=True).distinct()
+    results = Politician.objects.filter(state = state_name, transportation__info_or_not = "Pro Transit").values_list('district', flat=True).distinct().order_by('district')
     group_by_district = {}
     for value in results:
         group_by_district[value] = Politician.objects.filter(state = state_name, district = value, transportation__info_or_not = "Pro Transit")
     return render(request, "transportation/protransit.html", {'results': group_by_district, 'state': state_name}) 
 
 def state(request, state_name):
-    results = Politician.objects.filter(state = state_name).values_list('district', flat=True).distinct()
+    results = Politician.objects.filter(state = state_name).values_list('district', flat=True).distinct().order_by('district')
     group_by_district = {}
     for value in results:
         group_by_district[value] = Politician.objects.filter(state = state_name, district = value)
