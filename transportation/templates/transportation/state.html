@@ -37,7 +37,7 @@
     {% else %}
           {% if row.transportation_set.get.quotes == None %}
               <div class="card-body">
-              Politician does NOT mention public transportation.
+              My algorithm did NOT find anything on public transportation for politician.
               </div>
               <i class='fa-solid fa-xmark red-color fa-4x'></i>
           {% else %}
@@ -83,9 +83,8 @@
           {% if row.transportation_set.get.quotes == None %}
               <div style="height:6.25rem">
                 <div class="modal-body">
-                 Politician does NOT mention public transportation on their website.
+                Please check out {{row.full_name}}'s website and do more research on whether this politician believes in Public Transportation!!!
                 </div>
-                <i class='fa-solid fa-xmark red-color fa-4x'></i>
               </div>
           {% endif %}
 
