@@ -4,7 +4,7 @@
 
 <div style="background-color: #fff; padding-top: 4rem; padding-bottom: 4rem">
   <h1 style="text-align: center; font-size: 2rem;">
-    {{state}}'s House of Representatives that Believe in Public Transportation!
+    {{state}}'s House of Representatives that mention in Public Transportation.
   </h1>
 
   <div style="display: flex; justify-content: center; margin-top: 2em">
@@ -17,7 +17,7 @@
 
   <div class="quote-card card-shadow">
     <cite class="quote-body">
-        None of the House of Representatives in the state of {{state}} believe in public transportation.
+        None of the House of Representatives in the state of {{state}} have anything on public transportation. Do your research!
     </cite>
     <div class="quote-footer">
        <i class='fa-solid fa-xmark red-color fa-4x'></i>
@@ -31,7 +31,7 @@
 {% for result, value in results.items %}
 
 <div class="myheader">
-  <h2>District {{result}}</h2>
+  <h2>District {{result }}</h2>
 </div>
 
 <br />
@@ -41,23 +41,31 @@
   <div class="card card-shadow">
     <div class="card-header">{{row.full_name}}</div>
     <div class="card-readmore">{{row.party }}</div>
-<div style="height:6.25rem">
+<div class="card-big-body">
     {% if row.website == None %}
     <div class="card-body">
-      Politician does NOT have a website.
+      Politician does NOT have a website. Do more research to check if this politician is for it or against it.
     </div>
-    <i class='fa-solid fa-xmark red-color fa-4x'></i>
+    <i class="fa-solid fa-xmark red-color fa-3x"></i>
     {% else %}
-          {% if row.transportation_set.get.quotes == None %}
-              <div class="card-body">
-              Politician does NOT mention public transportation.
-              </div>
-              <i class='fa-solid fa-xmark red-color fa-4x'></i>
+          {% if row.transportation_set.exists %}
+            {% if row.transportation_set.get.quotes == None %}
+                <div class="card-body">
+                My algorithm DID NOT find anything on public transportation for politician.
+                Do more research to check if this politician is for it or against it.
+                </div>
+                <i class="fa fa-question fa-3x" ></i>
+            {% else %}
+                <div class="card-body">
+                Politician mentions public transportation. View Quotes to verify if politician is for public transit it or against it.
+                </div>
+                <i class='fa fa-check green-color fa-3x'></i>
+
+            {% endif %}
           {% else %}
               <div class="card-body">
-              Politician mentions public transportation!!!
-              </div>
-              <i class='fa fa-check green-color fa-4x'></i>
+                  Still in the process of running algorithm to see if politician mentions public transportation on their website. 
+                </div>
           {% endif %}
 
     {% endif %} 
@@ -96,9 +104,8 @@
           {% if row.transportation_set.get.quotes == None %}
               <div style="height:6.25rem">
                 <div class="modal-body">
-                 Politician does NOT mention public transportation on their website.
+                Please check out {{row.full_name}}'s website and do more research to check if this politician is for public transportation or against it.
                 </div>
-                <i class='fa-solid fa-xmark red-color fa-4x'></i>
               </div>
           {% endif %}
 
@@ -112,8 +119,6 @@
 </div>
 
 {% endfor %}
-
-{% endif %}
 
 <script>
   function view(id) {
@@ -136,5 +141,5 @@
     }
   }
 </script>
-
+{% endif %}
 {% endblock %}

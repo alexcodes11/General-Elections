@@ -4,6 +4,7 @@ from django.shortcuts import render
 from .models import Transportation, Politician
 
 
+
 # Order by district number !!
 
 
@@ -19,10 +20,11 @@ def protransit(request, state_name):
 
 def state(request, state_name):
     results = Politician.objects.filter(state = state_name).values_list('district', flat=True).distinct().order_by('district')
+    current = Politician.objects.values_list('state', flat=True).distinct().order_by('state')
     group_by_district = {}
     for value in results:
         group_by_district[value] = Politician.objects.filter(state = state_name, district = value)
-    return render(request, "transportation/state.html", {'results': group_by_district, 'state': state_name })
+    return render(request, "transportation/state.html", {'results': group_by_district, 'state': state_name, 'current': current })
 
 def quotes(request, quotes_id):
     if request.method == "GET":

@@ -8,96 +8,157 @@
   </h1>
 
   <div style="display: flex; justify-content: center; margin-top: 2em">
-      <a class="btn" href="/">Go Back</a>
 
-      <a class="btn btn-outline" href="{% url 'protransit' state %}">Politicians that mentions in Public Transportation</a>
+       <a class="btn" href="/">Main Page</a>
+      <a class="btn btn-outline" href="{% url 'protransit' state %}">Politicians that mentions Public Transportation</a>
 
   </div>
 </div>
 
-{% for result, value in results.items %}
 
-<div class="myheader">
-  <h2>District {{result }}</h2>
-</div>
+{% if results|length == 0 %} 
+<div class="card-grid-quote">
 
-<br />
 
-<div class="card-grid">
-  {% for row in value %}
-  <div class="card card-shadow">
-    <div class="card-header">{{row.full_name}}</div>
-    <div class="card-readmore">{{row.party }}</div>
-<div style="height:6.25rem">
-    {% if row.website == None %}
-    <div class="card-body">
-      Politician does NOT have a website.
+  <div class="quote-card card-shadow">
+    
+    <div class="quote-body">
+      <span style="font-weight: bold;">{{state}}'s House of Representatives</span> data is still being implemented by my Python Beautiful Soup data mining algorithim! 
     </div>
-    <i class='fa-solid fa-xmark red-color fa-4x'></i>
-    {% else %}
-          {% if row.transportation_set.get.quotes == None %}
-              <div class="card-body">
-              My algorithm did NOT find anything on public transportation for politician.
-              </div>
-              <i class='fa-solid fa-xmark red-color fa-4x'></i>
-          {% else %}
-              <div class="card-body">
-              Politician mentions public transportation!!!
-              </div>
-              <i class='fa fa-check green-color fa-4x'></i>
-          {% endif %}
-
-    {% endif %} 
-</div>
-    <div class="card-footer">
-      {% if row.transportation_set.get.quotes == None %}
-      <button onclick="view('{{row.politician_id}}')" class="btn">
-        View Quotes
-      </button>
-      {% else %}
-      <a href="{% url 'quotes' row.politician_id %}" target="_blank" rel="noopener noreferrer"  class="btn">View Quotes</a> 
-      {% endif %}
-
-      {% if row.website == None %}
-       <button class="btn btn-outline" target="_blank" rel="noopener noreferrer"  onclick="view('{{row.politician_id}}')"">View Website</button>
-       {% else %}
-       <a class="btn btn-outline" target="_blank" rel="noopener noreferrer" href="{{row.website}}">View Website</a>
-       {% endif %} 
-    </div>
-    <div class="modal" id="{{row.politician_id}}">
-      <div class="modal-header">
-        <div class="title">No Quotes: </div>
-        <button onclick="view('{{row.politician_id}}')" class="close-button">
-          &times;
-        </button>
-      </div>
-      
-    {% if row.website == None %}
-    <div style="height:6.25rem">
-      <div class="modal-body">
-        Politician does NOT have a website.
-      </div>
-      <i class='fa-solid fa-xmark red-color fa-4x'></i>
-    </div>
-    {% else %}
-          {% if row.transportation_set.get.quotes == None %}
-              <div style="height:6.25rem">
-                <div class="modal-body">
-                Please check out {{row.full_name}}'s website and do more research on whether this politician believes in Public Transportation!!!
-                </div>
-              </div>
-          {% endif %}
-
-    {% endif %} 
-
+    <div class="quote-footer">
 
     </div>
-  </div>
+
+<br>
+    <div class="quote-body">
+      These are the current state that have House of Representatives data implemented: 
+    </div>
+    {% for show in current %}
+    <div class="quote-footer">
+        <a href="{% url 'state' show %}">{{show}}</a>
+    </div>
   {% endfor %}
-  <div id="overlay"></div>
+
 </div>
 
-{% endfor %}
+
+
+  </div>
+  
+
+
+{% else %}
+
+    {% for result, value in results.items %}
+
+    <div class="myheader">
+      <h2>District {{result }}</h2>
+    </div>
+
+    <br />
+
+    <div class="card-grid">
+      {% for row in value %}
+      <div class="card card-shadow">
+        <div class="card-header">{{row.full_name}}</div>
+        <div class="card-readmore">{{row.party }}</div>
+    <div class="card-big-body">
+        {% if row.website == None %}
+        <div class="card-body">
+          Politician does NOT have a website. Do more research to check if this politician is for it or against it.
+        </div>
+        <i class="fa-solid fa-xmark red-color fa-3x"></i>
+        {% else %}
+              {% if row.transportation_set.exists %}
+                {% if row.transportation_set.get.quotes == None %}
+                    <div class="card-body">
+                    My algorithm DID NOT find anything on public transportation for politician.
+                    Do more research to check if this politician is for it or against it.
+                    </div>
+                    <i class="fa fa-question fa-3x" ></i>
+                {% else %}
+                    <div class="card-body">
+                    Politician mentions public transportation. View Quotes to verify if politician is for public transit it or against it.
+                    </div>
+                    <i class='fa fa-check green-color fa-3x'></i>
+
+                {% endif %}
+              {% else %}
+                  <div class="card-body">
+                      IN THE PROCESS of running algorithm to see if politician mentions public transportation on their website. 
+                    </div>
+              {% endif %}
+
+        {% endif %} 
+    </div>
+        <div class="card-footer">
+        {% if row.transportation_set.exists %}
+          {% if row.transportation_set.get.quotes == None %}
+          <button onclick="view('{{row.politician_id}}')" class="btn">
+            View Quotes
+          </button>
+          {% else %}
+          <a href="{% url 'quotes' row.politician_id %}" target="_blank" rel="noopener noreferrer"  class="btn">View Quotes</a> 
+          {% endif %}
+
+          {% if row.website == None %}
+          <button class="btn btn-outline" target="_blank" rel="noopener noreferrer"  onclick="view('{{row.politician_id}}')"">View Website</button>
+          {% else %}
+          <a class="btn btn-outline" target="_blank" rel="noopener noreferrer" href="{{row.website}}">View Website</a>
+          {% endif %} 
+          {% else %}
+          {% if row.website == None %}
+          <button class="btn btn-outline" target="_blank" rel="noopener noreferrer"  onclick="view('{{row.politician_id}}')"">View Website</button>
+          {% else %}
+          <button onclick="view('{{row.politician_id}}')" class="btn">View Quotes</button>
+          <a class="btn btn-outline" target="_blank" rel="noopener noreferrer" href="{{row.website}}">View Website</a>
+          {% endif %} 
+
+          {% endif %} 
+        </div>
+        <div class="modal" id="{{row.politician_id}}">
+          <div class="modal-header">
+            <div class="title">No Quotes: </div>
+            <button onclick="view('{{row.politician_id}}')" class="close-button">
+              &times;
+            </button>
+          </div>
+          
+        {% if row.website == None %}
+        <div style="height:6.25rem">
+          <div class="modal-body">
+            Politician does NOT have a website.
+          </div>
+          <i class='fa-solid fa-xmark red-color fa-4x'></i>
+        </div>
+        {% else %}
+              {% if row.transportation_set.get.quotes == None %}
+                  <div style="height:6.25rem">
+                    <div class="modal-body">
+                    Please check out {{row.full_name}}'s website and do more research to check if this politician is for public transportation or against it.
+                    </div>
+                  </div>
+              {% else %}
+              <div style="height:6.25rem">
+                    <div class="modal-body">
+                    Hold on just one second! IN THE PROCESS of running algorithm to see if politician mentions public transportation on their website. CHECK back another time!
+                    </div>
+                </div>
+              {% endif %}
+
+        {% endif %} 
+        
+
+
+        </div>
+      </div>
+      {% endfor %}
+      <div id="overlay"></div>
+    </div>
+
+    {% endfor %}
+
+{% endif %}
 
 <script>
   function view(id) {
