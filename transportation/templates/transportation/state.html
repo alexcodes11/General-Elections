@@ -1,5 +1,8 @@
 {% extends "transportation/layout.html" %} 
 {% load static %} 
+
+<title>{% block title %}{{state}}{% endblock %}</title>
+
 {% block body %}
 
 <div style="background-color: #fff; padding-top: 4rem; padding-bottom: 4rem">
@@ -67,26 +70,30 @@
         <div class="card-body">
           Politician does NOT have a website. Do more research to check if this politician is for it or against it.
         </div>
-        <i class="fa-solid fa-xmark red-color fa-3x"></i>
+        <i class="fa fa-question fa-3x" ></i>
         {% else %}
               {% if row.transportation_set.exists %}
-                {% if row.transportation_set.get.quotes == None %}
+                {% if row.transportation_set.get.info_or_not == 'No Info Found' %}
                     <div class="card-body">
-                    My algorithm DID NOT find anything on public transportation for politician.
-                    Do more research to check if this politician is for it or against it.
+                    My algorithm did not find anything on public transportation YET! I will rerun it to verify.
                     </div>
                     <i class="fa fa-question fa-3x" ></i>
+                {% elif row.transportation_set.get.info_or_not == 'DONE' %}
+                <div class="card-body">
+                    My algorithm DID NOT find anything on public transportation.
+                </div>
+                <i class='fa-solid fa-xmark red-color fa-3x'></i>
                 {% else %}
                     <div class="card-body">
-                    Politician mentions public transportation. View Quotes to verify if politician is for public transit it or against it.
+                     Politician mentions public transportation! View Quotes to verify if politician is for it or against it.
                     </div>
                     <i class='fa fa-check green-color fa-3x'></i>
-
                 {% endif %}
               {% else %}
                   <div class="card-body">
-                      IN THE PROCESS of running algorithm to check if politician mentions public transportation on their website! 
-                    </div>
+                    I have not ran my algorithim just yet! Stay patient!
+                  </div>
+                  <i class='fa fa-clock-o fa-3x'></i>
               {% endif %}
 
         {% endif %} 
@@ -125,29 +132,40 @@
           </div>
           
         {% if row.website == None %}
-        <div style="height:6.25rem">
+        <div style="height:7rem">
           <div class="modal-body">
             Politician does NOT have a website.
           </div>
-          <i class='fa-solid fa-xmark red-color fa-4x'></i>
+          <i class="fa fa-question fa-3x" ></i>
         </div>
         {% else %}
-              {% if row.transportation_set.get.quotes == None %}
+              {% if row.transportation_set.get.info_or_not == 'No Info Found' %}
                   <div style="height:6.25rem">
                     <div class="modal-body">
-                    Please check out {{row.full_name}}'s website and do more research to check if this politician is for public transportation or against it.
+                    I will rerun this algorithim! In the meantime, please check out {{row.full_name}}'s website 
+                    and do more research to verify if this politician is for public transportation or against it. 
                     </div>
+                    <i class="fa fa-question fa-3x" ></i>
                   </div>
+              {% elif row.transportation_set.get.info_or_not == 'DONE' %}
+              <div style="height:6.25rem">
+                    <div class="modal-body">
+                    My algorithm DID NOT find anything on public transportation. 
+                    </div>
+                    <i class='fa-solid fa-xmark red-color fa-3x'></i>
+                </div>
               {% else %}
               <div style="height:6.25rem">
                     <div class="modal-body">
-                    Hold on just one second! IN THE PROCESS of running algorithm to check if politician mentions public transportation on their website!  Check this state another time!
+                      I have not ran my algorithim just yet! Stay patient!
                     </div>
+                    <i class='fa fa-clock-o fa-3x'></i>
                 </div>
               {% endif %}
 
         {% endif %} 
-        
+
+
 
 
         </div>
